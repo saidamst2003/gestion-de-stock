@@ -1,4 +1,4 @@
-package net.javaguides.usemanagement.model;
+package stockagemanagement.model;
 
 public class Produit {
 	private int id;

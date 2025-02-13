@@ -1,4 +1,4 @@
-package net.javaguides.usermanagement.dao;
+package dtockageManagementt.dao;
 
 import java.io.InputStream;
 import java.io.Reader;
