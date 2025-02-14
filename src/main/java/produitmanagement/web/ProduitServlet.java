@@ -110,8 +110,62 @@ public class ProduitServlet extends HttpServlet {
 			}
 	}
 
- 
+    private void listProduit(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException, ServletException {
+        List < Produit > listProduit = produitDAO.selectAllProduits();
+        request.setAttribute("listProduit", listProduit);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("produit-list.jsp");
+        dispatcher.forward(request, response);
+    }
 
-  
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("produit-form.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idProduit"));
+        Produit existingProduit = produitDAO.selectProduit(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("produit-form.jsp");
+        request.setAttribute("produit", existingProduit);
+        dispatcher.forward(request, response);
+
+    }
+
+    private void insertProduit(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException {
+        String nom = request.getParameter("nameProduit");
+        String description = request.getParameter("descriptionProduit");
+        int quantité = Integer.parseInt( request.getParameter("quantite"));
+        float prix = Float.parseFloat( request.getParameter("prix"));
+        Categorie categorie = Categorie.valueOf(request.getParameter("categorie"));
+        Produit newProduit = new Produit(nom, description, quantité, prix, categorie);
+        produitDAO.insertProduit(newProduit);
+        response.sendRedirect("list");
+    }
+
+    private void updateProduit(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("idProduit"));
+        String nom = request.getParameter("nameProduit");
+        String description = request.getParameter("descriptionProduit");
+        int quantité = Integer.parseInt( request.getParameter("quantité"));
+        float prix = Float.parseFloat( request.getParameter("prix"));
+        Categorie categorie = Categorie.valueOf(request.getParameter("categorie"));
+
+        Produit book = new Produit(id,nom, description, quantité, prix,categorie);
+        produitDAO.updateProduit(book);
+        response.sendRedirect("list");
+    }
+
+    private void deleteProduit(HttpServletRequest request, HttpServletResponse response)
+    throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("idProduit"));
+        produitDAO.deleteProduit(id);
+        response.sendRedirect("list");
+
+    }
 
 }
