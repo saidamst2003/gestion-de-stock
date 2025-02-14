@@ -26,6 +26,18 @@ public Produit(int id, String nom, String description, int quantité, float pirx
 }
 
 
+
+public Produit(String nom, String description, int quantité, float pirx, Categorie categorie) {
+	super();
+	this.nom = nom;
+	this.description = description;
+	this.quantité = quantité;
+	this.pirx = pirx;
+	this.categorie = categorie;
+}
+
+
+
 public int getId() {
 	return id;
 }
