@@ -1,91 +1,100 @@
 package stockagemanagement.model;
 
 public class Produit {
-	private int id;
-	private String nom;
-	private String description;
-	private int quantité;
-	private float pirx;
+	private int idProduit;
+	private String nameProduit;
+	private String descriptionProduit;
+	private int quantite;
+	private float prix;
 	private Categorie categorie;
 	
 	   //declaration d'une enum categorie
     public enum Categorie {
         Électronique, Beauté, Maison, Vêtements, Alimentation
-
     }
 	
 	
-public Produit(int id, String nom, String description, int quantité, float pirx, Categorie categorie) {
+public Produit(int idProduit, String nameProduit, String descriptionProduit, int quantite, float prix, Categorie categorie) {
 		super();
-		this.id = id;
-		this.nom = nom;
-		this.description = description;
-		this.quantité = quantité;
-		this.pirx = pirx;
+		this.idProduit = idProduit;
+		this.nameProduit = nameProduit;
+		this.descriptionProduit = descriptionProduit;
+		this.quantite = quantite;
+		this.prix = prix;
 		this.categorie = categorie;
 }
 
 
 
-public Produit(String nom, String description, int quantité, float pirx, Categorie categorie) {
+public Produit(String nameProduit, String descriptionProduit, int quantite, float prix, Categorie categorie) {
 	super();
-	this.nom = nom;
-	this.description = description;
-	this.quantité = quantité;
-	this.pirx = pirx;
+	this.nameProduit = nameProduit;
+	this.descriptionProduit = descriptionProduit;
+	this.quantite = quantite;
+	this.prix = prix;
 	this.categorie = categorie;
 }
 
 
 
-public int getId() {
-	return id;
+public int getIdProduit() {
+	return idProduit;
 }
 
 
-public void setId(int id) {
-	this.id = id;
+
+public void setIdProduit(int idProduit) {
+	this.idProduit = idProduit;
 }
 
 
-public String getNom() {
-	return nom;
+
+public String getNameProduit() {
+	return nameProduit;
 }
 
 
-public void setNom(String nom) {
-	this.nom = nom;
+
+public void setNameProduit(String nameProduit) {
+	this.nameProduit = nameProduit;
 }
 
 
-public String getDescription() {
-	return description;
+
+public String getDescriptionProduit() {
+	return descriptionProduit;
 }
 
 
-public void setDescription(String description) {
-	this.description = description;
+
+public void setDescriptionProduit(String descriptionProduit) {
+	this.descriptionProduit = descriptionProduit;
 }
 
 
-public int getQuantité() {
-	return quantité;
+
+public int getQuantite() {
+	return quantite;
 }
 
 
-public void setQuantité(int quantité) {
-	this.quantité = quantité;
+
+public void setQuantite(int quantite) {
+	this.quantite = quantite;
 }
 
 
-public float getPirx() {
-	return pirx;
+
+public float getPrix() {
+	return prix;
 }
 
 
-public void setPirx(float pirx) {
-	this.pirx = pirx;
+
+public void setPrix(float prix) {
+	this.prix = prix;
 }
+
 
 
 public Categorie getCategorie() {
@@ -93,8 +102,12 @@ public Categorie getCategorie() {
 }
 
 
+
 public void setCategorie(Categorie categorie) {
 	this.categorie = categorie;
 }
+
+
+
 
 }
